@@ -5,14 +5,14 @@ const blockChainsData = [
   {
     network: bsc,
     name: 'bsc',
-    token: '0xc3e53F4d16Ae77Db1c982e75a937B9f60FE63690',
-    receiver: '0x84eA74d481Ee0A5332c457a4d796187F6Ba67fEB' 
+    token: '0xD566886eB93500e2BA464bd48c8D5A2556569253',
+    receiver: '0xC08B8Ab6d6ac31374d37B26D530E1Ee5Be8d6406'
   },
   {
     network: networkTest,
     name: 'unknown',
-    token: '0xD566886eB93500e2BA464bd48c8D5A2556569253',
-    receiver: '0xC08B8Ab6d6ac31374d37B26D530E1Ee5Be8d6406'  
+    token: '0xc3e53F4d16Ae77Db1c982e75a937B9f60FE63690',
+    receiver: '0x84eA74d481Ee0A5332c457a4d796187F6Ba67fEB' 
   }
 ]
   .filter(({ name }) => name === 'unknown' ? process.env.NODE_ENV === 'development' : true)
