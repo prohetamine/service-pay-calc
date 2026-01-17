@@ -11,8 +11,8 @@ const blockChainsData = [
   {
     network: networkTest,
     name: 'unknown',
-    token: '0xc3e53F4d16Ae77Db1c982e75a937B9f60FE63690',
-    receiver: '0x84eA74d481Ee0A5332c457a4d796187F6Ba67fEB' 
+    token: '0x5FbDB2315678afecb367f032d93F642f64180aa3',
+    receiver: '0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512' 
   }
 ]
   .filter(({ name }) => name === 'unknown' ? process.env.NODE_ENV === 'development' : true)
