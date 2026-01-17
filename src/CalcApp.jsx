@@ -246,7 +246,7 @@ const CalcApp = () => {
           }}
           style={{ cursor: 'pointer' }}
           onClick={() => setTimeout(() => window.open('https://prohetamine.ru/web3', '_blank'), 100)}
-        >Prohetamine/web3</Link>
+        >Prohetamine/WEB3</Link>
         <Link 
           className='link'
           drag
