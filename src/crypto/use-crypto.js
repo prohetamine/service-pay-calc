@@ -21,7 +21,7 @@ const useCrypto = () => {
     const getBalance = async () => {
         const [signer, network] = await createSignerPrivate()
         const _address = config.address[network]
-
+        
         const token = new Contract(_address.token, config.ABI.token, signer)
         const balance = await token.balanceOf(address)
         return balance

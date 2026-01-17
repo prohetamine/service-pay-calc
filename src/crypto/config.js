@@ -4,7 +4,7 @@ import networkTest from './network-test'
 const blockChainsData = [
   {
     network: bsc,
-    name: 'bsc',
+    name: 'bnb',
     token: '0xD566886eB93500e2BA464bd48c8D5A2556569253',
     receiver: '0xC08B8Ab6d6ac31374d37B26D530E1Ee5Be8d6406'
   },
