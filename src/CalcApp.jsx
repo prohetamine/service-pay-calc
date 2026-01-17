@@ -245,7 +245,22 @@ const CalcApp = () => {
             cursor: 'grab'
           }}
           style={{ cursor: 'pointer' }}
-          onClick={() => setTimeout(() => window.open('https://pancakeswap.finance/swap?chain=bsc&chainOut=bsc&inputCurrency=BNB&outputCurrency=&exactAmount=1000&exactField=OUTPUT', '_blank'), 100)}
+          onClick={() => setTimeout(() => window.open('https://prohetamine.ru/web3', '_blank'), 100)}
+        >Prohetamine/web3</Link>
+        <Link 
+          className='link'
+          drag
+          dragTransition={{
+            bounceStiffness: 100,
+            bounceDamping: 10
+          }}
+          dragSnapToOrigin
+          whileDrag={{
+            scale: 1.05,
+            cursor: 'grab'
+          }}
+          style={{ cursor: 'pointer' }}
+          onClick={() => setTimeout(() => window.open('https://pancakeswap.finance/swap?chain=bsc&chainOut=bsc&inputCurrency=BNB&outputCurrency=0xD566886eB93500e2BA464bd48c8D5A2556569253&exactAmount=1000&exactField=OUTPUT', '_blank'), 100)}
         >PancakeSwap</Link>
         <Link 
           className='link'
@@ -260,7 +275,7 @@ const CalcApp = () => {
             cursor: 'grab'
           }}
           style={{ cursor: 'pointer' }}
-          onClick={() => setTimeout(() => window.open('https://dexscreener.com/bsc/', '_blank'), 100)}
+          onClick={() => setTimeout(() => window.open('https://dexscreener.com/bsc/0xD566886eB93500e2BA464bd48c8D5A2556569253', '_blank'), 100)}
         >Dexscreener</Link>
         <Link 
           className='link'
@@ -275,7 +290,7 @@ const CalcApp = () => {
             cursor: 'grab'
           }}
           style={{ cursor: 'pointer' }}
-          onClick={() => setTimeout(() => window.open('https://bscscan.com/token/', '_blank'), 100)}
+          onClick={() => setTimeout(() => window.open('https://bscscan.com/token/0xD566886eB93500e2BA464bd48c8D5A2556569253', '_blank'), 100)}
         >Contract</Link>
         <Link 
           className='link'
