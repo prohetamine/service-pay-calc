@@ -5,8 +5,8 @@ const blockChainsData = [
   {
     network: bsc,
     name: 'bsc',
-    token: '',
-    receiver: ''  
+    token: '0xc3e53F4d16Ae77Db1c982e75a937B9f60FE63690',
+    receiver: '0x84eA74d481Ee0A5332c457a4d796187F6Ba67fEB' 
   },
   {
     network: networkTest,
