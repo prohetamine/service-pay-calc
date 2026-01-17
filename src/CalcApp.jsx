@@ -260,8 +260,8 @@ const CalcApp = () => {
             cursor: 'grab'
           }}
           style={{ cursor: 'pointer' }}
-          onClick={() => setTimeout(() => window.open('https://pancakeswap.finance/swap?chain=bsc&chainOut=bsc&inputCurrency=BNB&outputCurrency=0xD566886eB93500e2BA464bd48c8D5A2556569253&exactAmount=1000&exactField=OUTPUT', '_blank'), 100)}
-        >PancakeSwap</Link>
+          onClick={() => setTimeout(() => window.open('https://github.com/prohetamine/service-pay-calc', '_blank'), 100)}
+        >GitHub</Link>
         <Link 
           className='link'
           drag
@@ -275,8 +275,8 @@ const CalcApp = () => {
             cursor: 'grab'
           }}
           style={{ cursor: 'pointer' }}
-          onClick={() => setTimeout(() => window.open('https://github.com/prohetamine/service-pay-calc', '_blank'), 100)}
-        >GitHub</Link>
+          onClick={() => setTimeout(() => window.open('https://pancakeswap.finance/swap?chain=bsc&chainOut=bsc&inputCurrency=BNB&outputCurrency=0xD566886eB93500e2BA464bd48c8D5A2556569253&exactAmount=1000&exactField=OUTPUT', '_blank'), 100)}
+        >PancakeSwap</Link>
       </NavLinks>
       <CalcWrapper
         drag
