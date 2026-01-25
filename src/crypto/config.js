@@ -1,21 +1,22 @@
-import { bsc } from '@reown/appkit/networks'
-import networkTest from './network-test'
+import { bsc, polygon } from '@reown/appkit/networks'
+import testNetwork from './test-network.js'
 
 const blockChainsData = [
+  ...testNetwork,
   {
     network: bsc,
-    name: 'bnb',
     token: '0xD566886eB93500e2BA464bd48c8D5A2556569253',
-    receiver: '0xC08B8Ab6d6ac31374d37B26D530E1Ee5Be8d6406'
+    receiver: '0xC08B8Ab6d6ac31374d37B26D530E1Ee5Be8d6406',
+    publicRpc: 'https://bsc-rpc.publicnode.com'
   },
   {
-    network: networkTest,
-    name: 'unknown',
-    token: '0x5FbDB2315678afecb367f032d93F642f64180aa3',
-    receiver: '0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512' 
+    network: polygon,
+    token: '0xD566886eB93500e2BA464bd48c8D5A2556569253',
+    receiver: '0x9A31862285591a820EDD1c924D495880D4988D20',
+    publicRpc: 'https://polygon-bor-rpc.publicnode.com'
   }
 ]
-  .filter(({ name }) => name === 'unknown' ? process.env.NODE_ENV === 'development' : true)
+  .filter(({ network }) => (network.id === 14188 || network.id === 31337) ? process.env.NODE_ENV === 'development' : true)
   .filter(({ token, receiver }) => token && receiver)
 
 const config = {
@@ -27,8 +28,8 @@ const config = {
   },
   projectId: '1febfd92481d4ea997711d2ac4a363c0',
   networks: blockChainsData.map(({ network }) => network),
-  address: blockChainsData.reduce((ctx, { name, token, receiver }) => {
-    ctx[name] = {
+  address: blockChainsData.reduce((ctx, { network, token, receiver }) => {
+    ctx[network.id] = {
       token,
       receiver
     }

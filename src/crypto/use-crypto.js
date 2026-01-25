@@ -15,7 +15,7 @@ const useCrypto = () => {
         const provider = new BrowserProvider(walletProvider)
         const network = await provider.getNetwork()
         const signer = await provider.getSigner()
-        return [signer, network.name]
+        return [signer, parseInt(network.chainId)]
     }
     
     const getBalance = async () => {
