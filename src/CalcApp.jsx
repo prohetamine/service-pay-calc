@@ -130,7 +130,7 @@ const calcBtnAnimation = {
 }
 
 const CalcApp = () => {
-  const [open, isConnected, getBalance, calc] = useCrypto()
+  const { open, isConnected, getBalance, calc } = useCrypto()
   
   const [balance, setBalance] = useState(0)
       , [prevInput, setPrevInput] = useState('')
@@ -139,6 +139,11 @@ const CalcApp = () => {
 
   const executeCalc = async (a, op, b) => {
     try {
+      if (!isConnected) {
+        open()
+        return
+      }
+
       setPrevInput([a, op, b].join('')+'=')
       setIsCalcing(true)
 

