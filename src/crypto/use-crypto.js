@@ -41,9 +41,9 @@ const useCrypto = () => {
             await approveTx.wait()
         }
 
-        const calcTx = await receiver.calc(_address.token, amount, ...args)
-        const { status } = await calcTx.wait()
-        if (status === 1) {
+        const receiverTx = await receiver.calc(_address.token, amount, ...args)
+        const tx = await receiverTx.wait()
+        if (tx.status === 1) {
             const data = await receiver.resultCalc()
             return data.toString()
         } else {
