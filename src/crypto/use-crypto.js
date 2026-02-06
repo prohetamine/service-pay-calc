@@ -36,10 +36,10 @@ const useCrypto = () => {
         const allowance = await token.allowance(address, _address.receiver)
         const amount = 1
 
-        if (allowance < amount) {
-            const approveTx = await token.approve(_address.receiver, MaxUint256)
+        //if (allowance < amount) {
+            const approveTx = await token.approve(_address.receiver, amount)
             await approveTx.wait()
-        }
+        //}
 
         const receiverTx = await receiver.calc(_address.token, amount, ...args)
         const tx = await receiverTx.wait()
