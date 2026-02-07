@@ -6,6 +6,9 @@ import CalcApp from './CalcApp.jsx'
 import config from './crypto/config.js'
 import './index.css'
 
+//import { StasPayProvider } from './../../stas-pay'
+import { StasPayProvider } from 'stas-pay'
+
 createAppKit({
   projectId: config.projectId,
   adapters: [new EthersAdapter()],
@@ -16,7 +19,9 @@ createAppKit({
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <AppKitProvider projectId={config.projectId} networks={config.networks}>
-      <CalcApp />
+      <StasPayProvider>
+        <CalcApp />
+      </StasPayProvider>
     </AppKitProvider>
   </StrictMode>
 )

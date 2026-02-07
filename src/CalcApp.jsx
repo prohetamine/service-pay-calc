@@ -6,6 +6,8 @@ import { useEffect, useState } from 'react'
 import { styled } from 'styled-components'
 import { motion } from 'framer-motion'
 import useCrypto from './crypto/use-crypto.js'
+import { useStasPay } from 'stas-pay'
+//import { useStasPay } from './../../stas-pay'
 
 const Body = styled.div`
   width: 100%;
@@ -130,7 +132,8 @@ const calcBtnAnimation = {
 }
 
 const CalcApp = () => {
-  const { open, isConnected, getBalance, calc } = useCrypto()
+  const { open, isConnected, getBalance, calc, chainId, address } = useCrypto()
+  const confirm = useStasPay()
   
   const [balance, setBalance] = useState(0)
       , [prevInput, setPrevInput] = useState('')
@@ -138,6 +141,16 @@ const CalcApp = () => {
       , [isCalcing, setIsCalcing] = useState(false)
 
   const executeCalc = async (a, op, b) => {
+    const isOk = await confirm({
+      chainId, 
+      address,
+      count: 1
+    })
+
+    if (!isOk) {
+      return
+    }
+
     try {
       if (!isConnected) {
         open()
