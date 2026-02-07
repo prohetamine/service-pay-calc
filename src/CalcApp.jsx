@@ -144,7 +144,7 @@ const CalcApp = () => {
     const isOk = await confirm({
       chainId, 
       address,
-      count: 1
+      commission: 1
     })
 
     if (!isOk) {

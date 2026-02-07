@@ -10,7 +10,7 @@ const useCrypto = () => {
 
     const chainId = parseInt(network.chainId)
 
-    const createSignerPrivate = async () => {
+    const setupSigner = async () => {
         if (!walletProvider || !address) {
             throw new Error('Wallet not connected')
         }
@@ -22,7 +22,7 @@ const useCrypto = () => {
     
 
     const getBalance = async () => {
-        const [signer, network] = await createSignerPrivate()
+        const [signer, network] = await setupSigner()
         const _address = config.address[network]
         
         const token = new Contract(_address.token, config.ABI.token, signer)
@@ -31,7 +31,7 @@ const useCrypto = () => {
     }
 
     const calc = async (...args) => {
-        const [signer, network] = await createSignerPrivate()
+        const [signer, network] = await setupSigner()
         const _address = config.address[network]
 
         const token = new Contract(_address.token, config.ABI.token, signer)
